@@ -12,9 +12,43 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFfefcff),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        const SizedBox(
+          height: 40,
+        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Icon(
+                    Icons.shopping_cart_outlined,
+                    color: Colors.black,
+                  ),
+                  Text(
+                    'Shopping Cart',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                width: double.infinity,
+                height: 5,
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 180,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 80),
           child: Row(
             children: [
               Consumer<DataClass>(builder: (context, data, child) {
@@ -70,7 +104,7 @@ class HomePage extends StatelessWidget {
               const Spacer(),
               Container(
                 height: 60,
-                width: 200,
+                width: 180,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.black),
