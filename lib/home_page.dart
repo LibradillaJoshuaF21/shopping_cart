@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+
+import 'data_class.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +15,20 @@ class HomePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Row(
-            children: const [],
+            children: [
+              Consumer<DataClass>(builder: (context, data, child) {
+                return Text(
+                  '${data.x}',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                );
+              }),
+              const Spacer(),
+              const Text(
+                "Total",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              )
+            ],
           ),
         ),
         const SizedBox(
@@ -31,7 +48,23 @@ class HomePage extends StatelessWidget {
                           Border.all(color: const Color(0xFF716f72), width: 1)),
                   child: const Icon(Icons.add),
                 ),
-                onTap: () {},
+                onTap: () {
+                  if (context.read<DataClass>().x >= 5) {
+                    Get.snackbar("Item", "Can not more than this",
+                        backgroundColor: Colors.black,
+                        colorText: Colors.white,
+                        titleText: const Text(
+                          "Item",
+                          style: TextStyle(fontSize: 40, color: Colors.white),
+                        ),
+                        messageText: const Text(
+                          "Can not be more than this",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ));
+                  } else {
+                    context.read<DataClass>().incrementX();
+                  }
+                },
               ),
               const Spacer(),
               Container(
