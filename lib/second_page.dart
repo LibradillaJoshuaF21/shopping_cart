@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+
+import 'data_class.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
@@ -16,7 +20,22 @@ class SecondPage extends StatelessWidget {
               Flexible(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [],
+                  children: [
+                    Consumer<DataClass>(builder: (context, data, child) {
+                      return Text(
+                        '${data.x}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      );
+                    }),
+                    const Text(
+                      "-- Total",
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -28,7 +47,27 @@ class SecondPage extends StatelessWidget {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (Provider.of<DataClass>(context, listen: false).x <=
+                            0) {
+                          Get.snackbar("Item", "Can not decrease more",
+                              backgroundColor: Colors.black,
+                              colorText: Colors.white,
+                              titleText: const Text(
+                                "Item",
+                                style: TextStyle(
+                                    fontSize: 40, color: Colors.white),
+                              ),
+                              messageText: const Text(
+                                "Can not reduce more",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ));
+                        } else {
+                          Provider.of<DataClass>(context, listen: false)
+                              .decrementX();
+                        }
+                      },
                       child: Container(
                         height: 60,
                         width: 60,
