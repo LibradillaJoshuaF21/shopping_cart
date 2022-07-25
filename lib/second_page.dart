@@ -16,8 +16,43 @@ class SecondPage extends StatelessWidget {
           width: double.maxFinite,
           height: double.maxFinite,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.black,
+                        ),
+                        Text(
+                          'Shopping Cart',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 5,
+                      color: Colors.grey,
+                    ),
+                    const SizedBox(
+                      height: 180,
+                    ),
+                  ],
+                ),
+              ),
               Flexible(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -32,7 +67,7 @@ class SecondPage extends StatelessWidget {
                       );
                     }),
                     const Text(
-                      "-- Total",
+                      "Total",
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                     ),
@@ -46,6 +81,7 @@ class SecondPage extends StatelessWidget {
                 width: double.maxFinite,
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
                       onTap: () {
@@ -86,7 +122,7 @@ class SecondPage extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         height: 60,
-                        width: double.maxFinite,
+                        width: 180,
                         decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
