@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_cart/home_page.dart';
 
 import 'data_class.dart';
 
@@ -91,7 +92,11 @@ class SecondPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => const HomePage(),
+                                transition: Transition.downToUp,
+                                duration: const Duration(seconds: 1));
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const [
